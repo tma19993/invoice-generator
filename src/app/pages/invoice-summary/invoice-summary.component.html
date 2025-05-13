@@ -1,0 +1,34 @@
+<div class="invoice-summary">
+   
+   
+   <div>
+     <h2>Company Information</h2>
+     <p><strong>Name:</strong> {{ companyData().name }}</p>
+    <p><strong>Address:</strong> {{ companyData().address }}</p>
+    <p><strong>Phone Numbers:</strong>
+        @for(phone of companyData().phones; track $index){
+        {{ phone }}
+        @if($index < companyData().phones.length - 1){ {{ ',' }} } } </p>
+   </div>
+</div>
+<div class="products">
+<div>
+        <h2>List of Products</h2>
+    @if(products.length == 0) {
+    <p class="no-items">No items</p>
+    } @else {
+    @for (product of products; track $index) {
+    <div class="product">
+        <p><strong>Number: </strong> {{$index + 1 }}</p>
+        <p><strong>Name:</strong> {{ product.name }}</p>
+        <p><strong>Price:</strong> {{ product.price }}</p>
+        <p><strong>Count:</strong> {{ product.count }}</p>
+    </div>
+    }
+    <div class="total">
+        <p><strong>Total:</strong> {{ total }}</p>
+        </div>
+    }
+    
+</div>
+</div>

@@ -1,0 +1,47 @@
+<section>
+    <h1 style="text-align: center;">Invoice Form</h1>
+    @if(errorMessage){
+    <div style="color: red; margin-bottom: 20px; text-align: center;">
+        {{ errorMessage }}
+    </div>
+    }
+    <div>
+        <form [formGroup]="form">
+            <div formArrayName="products" class="products">
+                <div *ngFor="let product of products.controls; let id = index" [formGroupName]="id" class="product">
+
+                    <div class="product-item">
+                        <input type="text" formControlName="name" placeholder="Name" />
+                        <input type="number" formControlName="count" placeholder="Count" min="1" max="100" step="1" />
+                        <input type="number" formControlName="price" placeholder="Price" min="1" max="1000000" step="1" />
+                        <button type="button" (click)="remove(id)">Remove</button>
+                    </div>
+                    <div class="errors">
+                        @if(product.get('name')?.invalid && product.get('name')?.touched){
+                        <div style="color: red;">
+                            Name is required and must be at least 3 characters long and no longer than 30 characters
+                        </div>
+                        }
+                        @if(product.get('count')?.invalid && product.get('count')?.touched){
+                        <div style="color: red;">
+                            Count is required and must be integer between 1 and 100
+                        </div>
+                        }
+                        @if(product.get('price')?.invalid && product.get('price')?.touched){
+                        <div style="color: red;">
+                            Price is required and must be between 1 and 1,000,000
+                        </div>
+                        }
+                    </div>
+
+                </div>
+                <button type="button" (click)="addProduct()">Add item</button>
+            </div>
+
+            <div class="submit-button" style="margin: 20px 0;">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+</section>
