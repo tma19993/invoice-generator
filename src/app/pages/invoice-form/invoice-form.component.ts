@@ -7,11 +7,10 @@ import { InvoiceService } from '../../services/invoice.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-invoice-form',
-  standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
-  templateUrl: './invoice-form.component.html',
-  styleUrl: './invoice-form.component.scss'
+    selector: 'app-invoice-form',
+    imports: [ReactiveFormsModule, CommonModule],
+    templateUrl: './invoice-form.component.html',
+    styleUrl: './invoice-form.component.scss'
 })
 export class InvoiceFormComponent implements OnInit {
   private invoiceService: InvoiceService = inject(InvoiceService);

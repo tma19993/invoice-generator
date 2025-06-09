@@ -6,11 +6,10 @@ import { Company } from '../../models/company.model';
 import { Product } from '../../models/product.model';
 
 @Component({
-  selector: 'app-invoice-summary',
-  standalone: true,
-  imports: [RouterModule],
-  templateUrl: './invoice-summary.component.html',
-  styleUrl: './invoice-summary.component.scss'
+    selector: 'app-invoice-summary',
+    imports: [RouterModule],
+    templateUrl: './invoice-summary.component.html',
+    styleUrl: './invoice-summary.component.scss'
 })
 export class InvoiceSummaryComponent {
   private invoiceService: InvoiceService = inject(InvoiceService);
